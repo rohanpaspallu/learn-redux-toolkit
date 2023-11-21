@@ -43,3 +43,5 @@ consists of few libraries
 #### react-redux
 
 connects our app to redux
+
+# Author : ROHAN DEEPAK PASPALLU
