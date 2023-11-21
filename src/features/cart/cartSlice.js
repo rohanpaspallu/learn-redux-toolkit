@@ -33,12 +33,7 @@ const cartReducer = createSlice({
         (item) => item.id === action.payload.id
       );
 
-      cartItem.amount =
-        cartItem.amount > 0
-          ? cartItem.amount - 1
-          : (state.cartItems = state.cartItems.filter(
-              (item) => item.id !== cartItem.id
-            ));
+      cartItem.amount = cartItem.amount - 1;
     },
   },
 });
