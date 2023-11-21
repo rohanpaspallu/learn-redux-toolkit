@@ -15,7 +15,6 @@ const cartReducer = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
       state.amount = 0;
-      return { cartItems: [] };
     },
     removeItem: (state, action) => {
       state.cartItems = state.cartItems.filter(
@@ -35,10 +34,23 @@ const cartReducer = createSlice({
 
       cartItem.amount = cartItem.amount - 1;
     },
+    calculateTotals: (state) => {
+      let finalAmount = 0;
+      let finalTotal = 0;
+
+      state.cartItems.forEach((item) => {
+        console.log("item is : ", item);
+        finalAmount += item.amount;
+        finalTotal += item.amount * item.price;
+      });
+
+      state.amount = finalAmount;
+      state.total = finalTotal;
+    },
   },
 });
 
 // console.log("cart slice  : ", cartReducer);
-export const { clearCart, removeItem, increase, decrease } =
+export const { clearCart, removeItem, increase, decrease, calculateTotals } =
   cartReducer.actions;
 export default cartReducer.reducer;
