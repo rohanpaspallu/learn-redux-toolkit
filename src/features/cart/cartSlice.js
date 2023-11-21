@@ -34,7 +34,11 @@ const cartReducer = createSlice({
       );
 
       cartItem.amount =
-        cartItem.amount > 0 ? cartItem.amount - 1 : cartItem.amount;
+        cartItem.amount > 0
+          ? cartItem.amount - 1
+          : (state.cartItems = state.cartItems.filter(
+              (item) => item.id !== cartItem.id
+            ));
     },
   },
 });
